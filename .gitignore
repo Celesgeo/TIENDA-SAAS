@@ -1,6 +1,72 @@
+# =============================================================================
+# SECRETOS Y VARIABLES DE ENTORNO — nunca commitear
+# Solo se versionan plantillas: .env.example / .env.sample (sin valores reales)
+# =============================================================================
+
+.env
+.env.*
+!.env.example
+!.env.sample
+!.env.example.*
+!.env.sample.*
+
+# Herramientas de env
+.envrc
+.direnv/
+
+# Claves y certificados
+*.pem
+*.key
+*.p12
+*.pfx
+*.crt
+id_rsa
+id_rsa.pub
+*.keystore
+secrets/
+**/credentials.json
+**/serviceAccount*.json
+**/google-services.json
+**/GoogleService-Info.plist
+
+# NPM/Yarn con token (si existiera)
+.npmrc
+.yarnrc.yml
+
+# =============================================================================
+# Proyecto
+# =============================================================================
+
 node_modules/
 dist/
-.env
-.env.local
-.DS_Store
+build/
+.next/
+out/
+.turbo/
+.cache/
+
+# Logs
 *.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+logs/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE (opcional: descomenta si no querés compartir config local)
+# .vscode/
+# .idea/
+
+# Tests / coverage
+coverage/
+.nyc_output/
+
+# Vite (variables locales además de .env.*)
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local

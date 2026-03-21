@@ -2,6 +2,11 @@
 
 Plataforma multi-tenant para crear tiendas online (ropa y cosmética): panel de administración, tienda pública, carrito, checkout y **Mercado Pago**. Frontend en **React + Tailwind**, backend en **Node.js + Express + MongoDB**, imágenes con **Cloudinary**.
 
+### Seguridad y secretos
+
+- **No subas** archivos `.env` ni claves reales al repositorio. El `.gitignore` los excluye; solo se versionan `*.env.example` como plantillas.
+- Si en algún momento commiteaste un `.env` o una clave real, **bórrala del historial** (por ejemplo con [`git filter-repo`](https://github.com/newren/git-filter-repo)) y **rota todas las credenciales** en MongoDB, Cloudinary, Mercado Pago y `JWT_SECRET`, aunque borres el commit: GitHub puede haber guardado el historial público.
+
 ## Requisitos
 
 - Node.js 18+
