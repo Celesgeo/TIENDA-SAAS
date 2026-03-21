@@ -1,4 +1,4 @@
-# Tienda SaaS
+# TIENDA-SAAS
 
 Plataforma multi-tenant para crear tiendas online (ropa y cosmética): panel de administración, tienda pública, carrito, checkout y **Mercado Pago**. Frontend en **React + Tailwind**, backend en **Node.js + Express + MongoDB**, imágenes con **Cloudinary**.
 
