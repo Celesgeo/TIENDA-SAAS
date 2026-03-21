@@ -1,3 +1,6 @@
+# README del proyecto: solo local; no se versiona (oculto en GitHub)
+/README.md
+
 # =============================================================================
 # SECRETOS Y VARIABLES DE ENTORNO — nunca commitear
 # Solo se versionan plantillas: .env.example / .env.sample (sin valores reales)
