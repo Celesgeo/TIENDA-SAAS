@@ -17,9 +17,25 @@ const PORT = process.env.PORT || 5000;
 
 configureCloudinary();
 
+const allowedOrigins = (
+  process.env.CORS_ORIGINS ||
+  process.env.PUBLIC_APP_URL ||
+  ''
+)
+  .split(',')
+  .map((origin) => origin.trim())
+  .filter(Boolean);
+
 app.use(
   cors({
-    origin: process.env.PUBLIC_APP_URL || true,
+    origin(origin, callback) {
+      // Allow non-browser requests (curl, Postman, server-to-server)
+      if (!origin) return callback(null, true);
+      if (allowedOrigins.length === 0 || allowedOrigins.includes(origin)) {
+        return callback(null, true);
+      }
+      return callback(new Error(`CORS blocked for origin: ${origin}`));
+    },
     credentials: true,
   })
 );
@@ -41,9 +57,7 @@ app.use((err, _req, res, _next) => {
   res.status(err.status || 500).json({ error: err.message || 'Server error' });
 });
 
-const mongoUri = process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/tienda_saas';
-
-connectDb(mongoUri)
+connectDb()
   .then(() => {
     app.listen(PORT, () => {
       console.log(`API listening on http://localhost:${PORT}`);

@@ -1,9 +1,9 @@
-import { Store } from '../models/Store.js';
+import { storeFindById } from '../db/repositories.js';
 
 export async function loadStore(req, res, next) {
   try {
-    const store = await Store.findById(req.storeId).lean();
-    if (!store || store.owner.toString() !== req.userId) {
+    const store = await storeFindById(req.storeId);
+    if (!store || String(store.owner) !== String(req.userId)) {
       return res.status(403).json({ error: 'Store access denied' });
     }
     req.store = store;
