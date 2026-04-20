@@ -7,7 +7,7 @@
     @apply scroll-smooth;
   }
   body {
-    @apply bg-slate-50 text-slate-900;
+    @apply bg-[#f8f3ec] text-[#1f3d2b];
   }
 }
 
